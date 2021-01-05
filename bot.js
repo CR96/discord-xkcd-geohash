@@ -9,7 +9,10 @@ client.on("message", async message => {
 
 	if(message.content.indexOf(config.prefix) !== 0) return;
 
-	message.channel.send("Hello, world!");
+	const execSync = require('child_process').execSync;
+	const output = execSync('./geohash-display.sh', { encoding: 'utf-8' });
+
+	message.channel.send("Today's geohash for Detroit:\n" + output);
 });
 
 client.login(config.token);
