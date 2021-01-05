@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+# Shell implementation provided by Geohashing Wiki
+# https://geohashing.site/geohashing/Implementations/Libraries/Shell
+
+command -v md5 >/dev/null 2>&1 || md5() { md5sum | cut -c 1-32; }; [ -n "$1" ]
+command -v GET >/dev/null 2>&1 || GET() { wget -qO - "$@"; }; [ "$2" -gt -30 \
+] && { date -R >/dev/null 2>&1 && y='-d yesterday' || y='-v -1d'; }; d=$(GET \
+carabiner.peeron.com/xkcd/map/data/$(date $y +%Y/%m/%d)); printf $(date $3 +%F-$d) |
+md5 | sed 'y/abcdef/ABCDEF/; s/.\{16\}/.&LgPp/g' | dc -e "[$2]Sg [$1]Sg 16i" -
