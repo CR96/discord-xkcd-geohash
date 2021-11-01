@@ -1,5 +1,5 @@
-# Thanos
+# XKCD Geohash
+This is a Discord bot that shows a map with the location of a geohash for a given graticule.
 
-## Fun isn't something one considers when balancing a Discord server.
-
-This is a simple Discord bot that deletes all unpinned messages in a given channel.
+## Usage
+`+geohash [lat, long]
